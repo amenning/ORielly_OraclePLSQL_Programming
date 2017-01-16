@@ -1,0 +1,11 @@
+22:19:01 SQL> 
+22:19:01 SQL> BEGIN
+22:19:01   2  	  DBMS_OUTPUT.PUT_LINE('Hey look, ma!');
+22:19:01   3  END;
+22:19:01   4  /
+Hey look, ma!                                                                   
+
+PL/SQL procedure successfully completed.
+
+22:19:01 SQL> 
+22:19:01 SQL> SPOOL OFF
