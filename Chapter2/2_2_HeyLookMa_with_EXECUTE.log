@@ -1,0 +1,8 @@
+22:27:05 SQL> 
+22:27:05 SQL> EXECUTE DBMS_OUTPUT.PUT_LINE('Hey look, ma!');
+Hey look, ma!                                                                   
+
+PL/SQL procedure successfully completed.
+
+22:27:05 SQL> 
+22:27:05 SQL> SPOOL OFF
