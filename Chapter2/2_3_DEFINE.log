@@ -1,0 +1,15 @@
+00:37:43 SQL> 
+00:37:43 SQL> DEFINE x = "the answer is 42";
+00:37:43 SQL> DEFINE x;
+DEFINE X               = "the answer is 42" (CHAR)
+00:37:43 SQL> 
+00:37:43 SQL> SELECT '&x' FROM DUAL;
+old   1: SELECT '&x' FROM DUAL
+new   1: SELECT 'the answer is 42' FROM DUAL
+
+'THEANSWERIS42'                                                                 
+----------------                                                                
+the answer is 42                                                                
+
+00:37:43 SQL> 
+00:37:43 SQL> SPOOL OFF
