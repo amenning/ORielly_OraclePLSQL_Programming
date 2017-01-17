@@ -1,0 +1,23 @@
+21:50:56 SQL> 
+21:50:56 SQL> BEGIN
+21:50:56   2  	  DBMS_OUTPUT.PUT_LINE('There are ' || wordcount(CHR(9)) || 'words in a tab');
+21:50:56   3  END;
+21:50:56   4  /
+There are 0words in a tab                                                       
+
+PL/SQL procedure successfully completed.
+
+21:50:56 SQL> 
+21:50:56 SQL> VARIABLE words NUMBER
+21:50:56 SQL> CALL wordcount('some text') INTO :words;
+
+Call completed.
+
+21:50:56 SQL> PRINT :words
+
+     WORDS                                                                      
+----------                                                                      
+         2                                                                      
+
+21:50:56 SQL> 
+21:50:56 SQL> SPOOL OFF
