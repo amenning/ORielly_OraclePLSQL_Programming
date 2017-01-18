@@ -1,0 +1,23 @@
+22:22:10 SQL> 
+22:22:10 SQL> -- Anonymous Block (i.e. no Header section)
+22:22:10 SQL> CREATE OR REPLACE PROCEDURE calc_totals
+22:22:10   2  IS
+22:22:10   3  	  year_total NUMBER;
+22:22:10   4  BEGIN
+22:22:10   5  	  year_total := 0;
+22:22:10   6  
+22:22:10   7  	  /* Beginning of nested block */
+22:22:10   8  	  DECLARE
+22:22:10   9  	      month_total NUMBER;
+22:22:10  10  	  BEGIN
+22:22:10  11  	      month_total := year_total / 12;
+22:22:10  12  	  END set_month_total;
+22:22:10  13  	  /* End of nested block */
+22:22:10  14  
+22:22:10  15  END;
+22:22:10  16  /
+
+Procedure created.
+
+22:22:10 SQL> 
+22:22:10 SQL> SPOOL OFF

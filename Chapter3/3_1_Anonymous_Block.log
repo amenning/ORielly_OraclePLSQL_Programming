@@ -1,0 +1,12 @@
+22:02:52 SQL> 
+22:02:52 SQL> -- Execution section only; No Header section
+22:02:52 SQL> BEGIN
+22:02:52   2  	  DBMS_OUTPUT.PUT_LINE('Hello world');
+22:02:52   3  END;
+22:02:52   4  /
+Hello world                                                                     
+
+PL/SQL procedure successfully completed.
+
+22:02:52 SQL> 
+22:02:52 SQL> SPOOL OFF
