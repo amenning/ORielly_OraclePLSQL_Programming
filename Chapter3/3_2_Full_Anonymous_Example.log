@@ -1,20 +1,20 @@
-22:06:40 SQL> 
-22:06:40 SQL> -- Anonymous Block (i.e. no Header section)
-22:06:40 SQL> DECLARE
-22:06:40   2  	  l_right_now VARCHAR2(9);
-22:06:40   3  BEGIN
-22:06:40   4  	  l_right_now := SYSDATE;
-22:06:40   5  	  DBMS_OUTPUT.PUT_LINE(l_right_now);
-22:06:40   6  EXCEPTION
-22:06:40   7  	  WHEN VALUE_ERROR
-22:06:40   8  	  THEN
-22:06:40   9  	      DBMS_OUTPUT.PUT_LINE('I bet l_right_now is too small '
-22:06:40  10  		  || 'for the default date format!');
-22:06:40  11  END;
-22:06:40  12  /
-17-JAN-17                                                                       
+16:52:40 SQL> 
+16:52:40 SQL> -- Anonymous Block (i.e. no Header section)
+16:52:40 SQL> DECLARE
+16:52:40   2  	  l_right_now VARCHAR2(9);
+16:52:40   3  BEGIN
+16:52:40   4  	  l_right_now := SYSDATE;
+16:52:40   5  	  DBMS_OUTPUT.PUT_LINE(l_right_now);
+16:52:40   6  EXCEPTION
+16:52:40   7  	  WHEN VALUE_ERROR
+16:52:40   8  	  THEN
+16:52:40   9  	      DBMS_OUTPUT.PUT_LINE('I bet l_right_now is too small '
+16:52:40  10  		  || 'for the default date format!');
+16:52:40  11  END;
+16:52:40  12  /
+21-JAN-17                                                                       
 
 PL/SQL procedure successfully completed.
 
-22:06:40 SQL> 
-22:06:40 SQL> SPOOL OFF
+16:52:40 SQL> 
+16:52:40 SQL> SPOOL OFF

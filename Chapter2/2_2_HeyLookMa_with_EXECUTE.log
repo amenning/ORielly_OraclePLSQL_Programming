@@ -1,8 +1,8 @@
-22:27:05 SQL> 
-22:27:05 SQL> EXECUTE DBMS_OUTPUT.PUT_LINE('Hey look, ma!');
+16:49:28 SQL> 
+16:49:28 SQL> EXECUTE DBMS_OUTPUT.PUT_LINE('Hey look, ma!');
 Hey look, ma!                                                                   
 
 PL/SQL procedure successfully completed.
 
-22:27:05 SQL> 
-22:27:05 SQL> SPOOL OFF
+16:49:28 SQL> 
+16:49:28 SQL> SPOOL OFF

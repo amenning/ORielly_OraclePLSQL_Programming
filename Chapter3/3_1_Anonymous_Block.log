@@ -1,12 +1,12 @@
-22:02:52 SQL> 
-22:02:52 SQL> -- Execution section only; No Header section
-22:02:52 SQL> BEGIN
-22:02:52   2  	  DBMS_OUTPUT.PUT_LINE('Hello world');
-22:02:52   3  END;
-22:02:52   4  /
+16:52:20 SQL> 
+16:52:20 SQL> -- Execution section only; No Header section
+16:52:20 SQL> BEGIN
+16:52:20   2  	  DBMS_OUTPUT.PUT_LINE('Hello world');
+16:52:20   3  END;
+16:52:20   4  /
 Hello world                                                                     
 
 PL/SQL procedure successfully completed.
 
-22:02:52 SQL> 
-22:02:52 SQL> SPOOL OFF
+16:52:20 SQL> 
+16:52:20 SQL> SPOOL OFF

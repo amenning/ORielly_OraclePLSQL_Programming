@@ -1,24 +1,24 @@
-00:40:15 SQL> 
-00:40:15 SQL> VARIABLE x VARCHAR2(10);
-00:40:15 SQL> BEGIN
-00:40:15   2  	  :x := 'hullo';
-00:40:15   3  END;
-00:40:15   4  /
+16:49:53 SQL> 
+16:49:53 SQL> VARIABLE x VARCHAR2(10);
+16:49:53 SQL> BEGIN
+16:49:53   2  	  :x := 'hullo';
+16:49:53   3  END;
+16:49:53   4  /
 
 PL/SQL procedure successfully completed.
 
-00:40:15 SQL> PRINT :x
+16:49:53 SQL> PRINT :x
 
 X                                                                               
 --------------------------------                                                
 hullo                                                                           
 
-00:40:15 SQL> 
-00:40:15 SQL> SELECT :x FROM DUAL;
+16:49:53 SQL> 
+16:49:53 SQL> SELECT :x FROM DUAL;
 
 :X                                                                              
 --------------------------------                                                
 hullo                                                                           
 
-00:40:15 SQL> 
-00:40:15 SQL> SPOOL OFF
+16:49:53 SQL> 
+16:49:53 SQL> SPOOL OFF
