@@ -1,0 +1,55 @@
+23:30:20 SQL> 
+23:30:20 SQL> CREATE OR REPLACE PACKAGE scope_demo
+23:30:20   2  IS
+23:30:20   3  	  g_global NUMBER;
+23:30:20   4  
+23:30:20   5  	  PROCEDURE set_global (number_in IN NUMBER);
+23:30:20   6  END scope_demo;
+23:30:20   7  /
+
+Package created.
+
+23:30:20 SQL> 
+23:30:20 SQL> CREATE OR REPLACE PACKAGE BODY scope_demo
+23:30:20   2  IS
+23:30:20   3  	  PROCEDURE set_global (number_in IN NUMBER)
+23:30:20   4  	  IS
+23:30:20   5  	      l_salary NUMBER := 10000;
+23:30:20   6  	      l_count  PLS_INTEGER;
+23:30:20   7  	  BEGIN
+23:30:20   8  	      <<local_block>>
+23:30:20   9  	      DECLARE
+23:30:20  10  		  l_inner NUMBER;
+23:30:20  11  	      BEGIN
+23:30:20  12  		  SELECT 1
+23:30:20  13  		  INTO l_count
+23:30:20  14  		  FROM DUAL;
+23:30:20  15  	      END local_block;
+23:30:20  16  
+23:30:20  17  	      g_global := number_in;
+23:30:20  18  	  END set_global;
+23:30:20  19  END scope_demo;
+23:30:20  20  /
+
+Package body created.
+
+23:30:20 SQL> 
+23:30:20 SQL> --Use new package
+23:30:20 SQL> DECLARE
+23:30:20   2  	  g_value NUMBER;
+23:30:20   3  BEGIN
+23:30:20   4  	  scope_demo.set_global(34);
+23:30:20   5  
+23:30:20   6  	  SELECT scope_demo.g_global
+23:30:20   7  	  INTO g_value
+23:30:20   8  	  FROM DUAL;
+23:30:20   9  
+23:30:20  10  	  DBMS_OUTPUT.PUT_LINE(g_value);
+23:30:20  11  END;
+23:30:20  12  /
+34                                                                              
+
+PL/SQL procedure successfully completed.
+
+23:30:20 SQL> 
+23:30:20 SQL> SPOOL OFF
