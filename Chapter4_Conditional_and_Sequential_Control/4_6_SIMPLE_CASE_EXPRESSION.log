@@ -1,0 +1,28 @@
+23:23:39 SQL> 
+23:23:39 SQL> DECLARE
+23:23:39   2  	  boolean_true BOOLEAN := TRUE;
+23:23:39   3  	  boolean_false BOOLEAN := FALSE;
+23:23:39   4  	  boolean_null BOOLEAN;
+23:23:39   5  	  FUNCTION boolean_to_varchar2 (flag IN BOOLEAN) RETURN VARCHAR2 IS
+23:23:39   6  	  BEGIN
+23:23:39   7  	      RETURN
+23:23:39   8  		  CASE flag
+23:23:39   9  		      WHEN TRUE THEN 'True'
+23:23:39  10  		      WHEN FALSE THEN 'False'
+23:23:39  11  		      ELSE 'NULL'
+23:23:39  12  		  END;
+23:23:39  13  	  END;
+23:23:39  14  BEGIN
+23:23:39  15  	  DBMS_OUTPUT.PUT_LINE(boolean_to_varchar2(boolean_true));
+23:23:39  16  	  DBMS_OUTPUT.PUT_LINE(boolean_to_varchar2(boolean_false));
+23:23:39  17  	  DBMS_OUTPUT.PUT_LINE(boolean_to_varchar2(boolean_null));
+23:23:39  18  END;
+23:23:39  19  /
+True                                                                            
+False                                                                           
+NULL                                                                            
+
+PL/SQL procedure successfully completed.
+
+23:23:39 SQL> 
+23:23:39 SQL> SPOOL OFF

@@ -1,0 +1,27 @@
+23:00:19 SQL> 
+23:00:19 SQL> DECLARE
+23:00:19   2  	  g_salary NUMBER;
+23:00:19   3  BEGIN
+23:00:19   4  	  g_salary := 50000;
+23:00:19   5  
+23:00:19   6  	  CASE TRUE
+23:00:19   7  	  WHEN g_salary <= 20000
+23:00:19   8  	  THEN
+23:00:19   9  	      DBMS_OUTPUT.PUT_LINE('Bonus = ' || 500);
+23:00:19  10  	  WHEN g_salary BETWEEN 20000 AND 30000
+23:00:19  11  	  THEN
+23:00:19  12  	      DBMS_OUTPUT.PUT_LINE('Bonus = ' || 1000);
+23:00:19  13  	  WHEN g_salary >= 30000
+23:00:19  14  	  THEN
+23:00:19  15  	      DBMS_OUTPUT.PUT_LINE('Bonus = ' || 1500);
+23:00:19  16  	  ELSE
+23:00:19  17  	      DBMS_OUTPUT.PUT_LINE('Bonus = ' || 0);
+23:00:19  18  	  END CASE;
+23:00:19  19  END;
+23:00:19  20  /
+Bonus = 1500                                                                    
+
+PL/SQL procedure successfully completed.
+
+23:00:19 SQL> 
+23:00:19 SQL> SPOOL OFF

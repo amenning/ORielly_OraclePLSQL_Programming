@@ -1,0 +1,14 @@
+23:30:54 SQL> 
+23:30:54 SQL> BEGIN
+23:30:54   2  	  GOTO second_output;
+23:30:54   3  	  DBMS_OUTPUT.PUT_LINE('This line will never execute.');
+23:30:54   4  	  <<second_output>>
+23:30:54   5  	  DBMS_OUTPUT.PUT_LINE('We are here!');
+23:30:54   6  END;
+23:30:54   7  /
+We are here!                                                                    
+
+PL/SQL procedure successfully completed.
+
+23:30:54 SQL> 
+23:30:54 SQL> SPOOL OFF
