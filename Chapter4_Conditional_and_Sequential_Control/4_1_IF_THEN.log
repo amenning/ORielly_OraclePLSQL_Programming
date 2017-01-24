@@ -1,0 +1,18 @@
+20:14:56 SQL> 
+20:14:56 SQL> DECLARE
+20:14:56   2  	  g_salary NUMBER;
+20:14:56   3  BEGIN
+20:14:56   4  	  g_salary := 50000;
+20:14:56   5  
+20:14:56   6  	  IF g_salary > 40000
+20:14:56   7  	  THEN
+20:14:56   8  	       DBMS_OUTPUT.PUT_LINE(g_salary + 500);
+20:14:56   9  	  END IF;
+20:14:56  10  END;
+20:14:56  11  /
+50500                                                                           
+
+PL/SQL procedure successfully completed.
+
+20:14:56 SQL> 
+20:14:56 SQL> SPOOL OFF

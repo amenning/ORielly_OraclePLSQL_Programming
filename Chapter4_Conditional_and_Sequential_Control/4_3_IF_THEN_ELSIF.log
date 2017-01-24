@@ -1,0 +1,26 @@
+20:33:17 SQL> 
+20:33:17 SQL> DECLARE
+20:33:17   2  	  g_salary NUMBER;
+20:33:17   3  BEGIN
+20:33:17   4  	  g_salary := 50000;
+20:33:17   5  
+20:33:17   6  	  IF NVL(g_salary, 0) <= 20000
+20:33:17   7  	  THEN
+20:33:17   8  	       DBMS_OUTPUT.PUT_LINE('Bonus = ' || 500);
+20:33:17   9  	  ELSIF NVL(g_salary, 0) BETWEEN 20000 AND 40000
+20:33:17  10  	  THEN
+20:33:17  11  	       DBMS_OUTPUT.PUT_LINE('Bonus = ' || 1000);
+20:33:17  12  	  ELSIF NVL(g_salary, 0) > 40000
+20:33:17  13  	  THEN
+20:33:17  14  	       DBMS_OUTPUT.PUT_LINE('Bonus = ' || 1500);
+20:33:17  15  	  ELSE
+20:33:17  16  	       DBMS_OUTPUT.PUT_LINE('Bonus = ' || 0);
+20:33:17  17  	  END IF;
+20:33:17  18  END;
+20:33:17  19  /
+Bonus = 1500                                                                    
+
+PL/SQL procedure successfully completed.
+
+20:33:17 SQL> 
+20:33:17 SQL> SPOOL OFF
