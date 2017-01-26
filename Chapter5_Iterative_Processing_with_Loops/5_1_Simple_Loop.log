@@ -1,0 +1,36 @@
+22:56:19 SQL> 
+22:56:19 SQL> CREATE OR REPLACE PROCEDURE display_multiple_years (
+22:56:19   2  	  start_year_in IN PLS_INTEGER
+22:56:19   3  	 ,end_year_in IN PLS_INTEGER
+22:56:19   4  )
+22:56:19   5  IS
+22:56:19   6  	  l_current_year PLS_INTEGER := start_year_in;
+22:56:19   7  BEGIN
+22:56:19   8  	  LOOP
+22:56:19   9  	      EXIT WHEN l_current_year > end_year_in;
+22:56:19  10  	      DBMS_OUTPUT.PUT_LINE('Current Year: ' || l_current_year);
+22:56:19  11  	      l_current_year := l_current_year +1;
+22:56:19  12  	  END LOOP;
+22:56:19  13  END;
+22:56:19  14  /
+
+Procedure created.
+
+22:56:19 SQL> 
+22:56:19 SQL> EXECUTE display_multiple_years(2010, 2020);
+Current Year: 2010                                                              
+Current Year: 2011                                                              
+Current Year: 2012                                                              
+Current Year: 2013                                                              
+Current Year: 2014                                                              
+Current Year: 2015                                                              
+Current Year: 2016                                                              
+Current Year: 2017                                                              
+Current Year: 2018                                                              
+Current Year: 2019                                                              
+Current Year: 2020                                                              
+
+PL/SQL procedure successfully completed.
+
+22:56:19 SQL> 
+22:56:19 SQL> SPOOL OFF
