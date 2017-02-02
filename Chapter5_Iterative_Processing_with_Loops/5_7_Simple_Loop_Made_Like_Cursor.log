@@ -1,0 +1,46 @@
+19:39:12 SQL> 
+19:39:12 SQL> CREATE OR REPLACE PROCEDURE display_multiple_years (
+19:39:12   2  	  start_year_in IN PLS_INTEGER
+19:39:12   3  	 ,end_year_in IN PLS_INTEGER
+19:39:12   4  )
+19:39:12   5  IS
+19:39:12   6  	  CURSOR l_cursor IS
+19:39:12   7  	      SELECT year
+19:39:12   8  	      FROM (
+19:39:12   9  		  SELECT ROWNUM year
+19:39:12  10  		  FROM DUAL
+19:39:12  11  		  CONNECT BY LEVEL <= 3000
+19:39:12  12  	      )
+19:39:12  13  	      WHERE year BETWEEN start_year_in AND end_year_in;
+19:39:12  14  	  l_cursor_rec l_cursor%ROWTYPE;
+19:39:12  15  BEGIN
+19:39:12  16  	  OPEN l_cursor;
+19:39:12  17  	  LOOP
+19:39:12  18  	      FETCH l_cursor INTO l_cursor_rec;
+19:39:12  19  	      EXIT WHEN l_cursor%NOTFOUND;
+19:39:12  20  	      DBMS_OUTPUT.PUT_LINE('Current Year: ' || l_cursor_rec.year);
+19:39:12  21  	  END LOOP;
+19:39:12  22  	  CLOSE l_cursor;
+19:39:12  23  END display_multiple_years;
+19:39:12  24  /
+
+Procedure created.
+
+19:39:12 SQL> 
+19:39:12 SQL> EXECUTE display_multiple_years(2010, 2020);
+Current Year: 2010                                                              
+Current Year: 2011                                                              
+Current Year: 2012                                                              
+Current Year: 2013                                                              
+Current Year: 2014                                                              
+Current Year: 2015                                                              
+Current Year: 2016                                                              
+Current Year: 2017                                                              
+Current Year: 2018                                                              
+Current Year: 2019                                                              
+Current Year: 2020                                                              
+
+PL/SQL procedure successfully completed.
+
+19:39:12 SQL> 
+19:39:12 SQL> SPOOL OFF

@@ -1,29 +1,29 @@
-23:36:31 SQL> 
-23:36:31 SQL> CREATE OR REPLACE PROCEDURE display_multiple_years (
-23:36:31   2  	  start_year_in IN PLS_INTEGER
-23:36:31   3  	 ,end_year_in IN PLS_INTEGER
-23:36:31   4  )
-23:36:31   5  IS
-23:36:31   6  BEGIN
-23:36:31   7  	  FOR l_cursor IN (
-23:36:31   8  	      SELECT year
-23:36:31   9  	      FROM (
-23:36:31  10  		  SELECT ROWNUM year
-23:36:31  11  		  FROM DUAL
-23:36:31  12  		  CONNECT BY LEVEL <= 3000
-23:36:31  13  	      )
-23:36:31  14  	      WHERE year BETWEEN start_year_in AND end_year_in
-23:36:31  15  	  )
-23:36:31  16  	  LOOP
-23:36:31  17  	      DBMS_OUTPUT.PUT_LINE('Current Year: ' || l_cursor.year);
-23:36:31  18  	  END LOOP;
-23:36:31  19  END display_multiple_years;
-23:36:31  20  /
+19:35:15 SQL> 
+19:35:15 SQL> CREATE OR REPLACE PROCEDURE display_multiple_years (
+19:35:15   2  	  start_year_in IN PLS_INTEGER
+19:35:15   3  	 ,end_year_in IN PLS_INTEGER
+19:35:15   4  )
+19:35:15   5  IS
+19:35:15   6  BEGIN
+19:35:15   7  	  FOR l_cursor IN (
+19:35:15   8  	      SELECT year
+19:35:15   9  	      FROM (
+19:35:15  10  		  SELECT ROWNUM year
+19:35:15  11  		  FROM DUAL
+19:35:15  12  		  CONNECT BY LEVEL <= 3000
+19:35:15  13  	      )
+19:35:15  14  	      WHERE year BETWEEN start_year_in AND end_year_in
+19:35:15  15  	  )
+19:35:15  16  	  LOOP
+19:35:15  17  	      DBMS_OUTPUT.PUT_LINE('Current Year: ' || l_cursor.year);
+19:35:15  18  	  END LOOP;
+19:35:15  19  END display_multiple_years;
+19:35:15  20  /
 
 Procedure created.
 
-23:36:31 SQL> 
-23:36:31 SQL> EXECUTE display_multiple_years(2010, 2020);
+19:35:15 SQL> 
+19:35:15 SQL> EXECUTE display_multiple_years(2010, 2020);
 Current Year: 2010                                                              
 Current Year: 2011                                                              
 Current Year: 2012                                                              
@@ -38,5 +38,5 @@ Current Year: 2020
 
 PL/SQL procedure successfully completed.
 
-23:36:31 SQL> 
-23:36:31 SQL> SPOOL OFF
+19:35:15 SQL> 
+19:35:15 SQL> SPOOL OFF
