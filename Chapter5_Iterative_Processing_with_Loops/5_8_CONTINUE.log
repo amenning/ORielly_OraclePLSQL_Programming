@@ -1,0 +1,19 @@
+19:46:46 SQL> 
+19:46:46 SQL> BEGIN
+19:46:46   2  	  FOR l_index IN 1 .. 10
+19:46:46   3  	  LOOP
+19:46:46   4  	      CONTINUE WHEN MOD (l_index, 2) = 0;
+19:46:46   5  	      DBMS_OUTPUT.PUT_LINE('Loop index = ' || TO_CHAR(l_index));
+19:46:46   6  	  END LOOP;
+19:46:46   7  END;
+19:46:46   8  /
+Loop index = 1                                                                  
+Loop index = 3                                                                  
+Loop index = 5                                                                  
+Loop index = 7                                                                  
+Loop index = 9                                                                  
+
+PL/SQL procedure successfully completed.
+
+19:46:46 SQL> 
+19:46:46 SQL> SPOOL OFF

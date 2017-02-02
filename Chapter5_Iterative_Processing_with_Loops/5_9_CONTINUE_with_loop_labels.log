@@ -1,0 +1,31 @@
+19:53:28 SQL> 
+19:53:28 SQL> BEGIN
+19:53:28   2  	  <<outer>>
+19:53:28   3  	  FOR outer_index IN 1 .. 5
+19:53:28   4  	  LOOP
+19:53:28   5  	      DBMS_OUTPUT.PUT_LINE('Outer index = ' || TO_CHAR(outer_index));
+19:53:28   6  
+19:53:28   7  	      <<inner>>
+19:53:28   8  	      FOR inner_index IN 1 .. 5
+19:53:28   9  	      LOOP
+19:53:28  10  		  DBMS_OUTPUT.PUT_LINE('    Inner index = ' || TO_CHAR(inner_index));
+19:53:28  11  		  CONTINUE outer;
+19:53:28  12  	      END LOOP inner;
+19:53:28  13  	  END LOOP outer;
+19:53:28  14  END;
+19:53:28  15  /
+Outer index = 1                                                                 
+Inner index = 1                                                                 
+Outer index = 2                                                                 
+Inner index = 1                                                                 
+Outer index = 3                                                                 
+Inner index = 1                                                                 
+Outer index = 4                                                                 
+Inner index = 1                                                                 
+Outer index = 5                                                                 
+Inner index = 1                                                                 
+
+PL/SQL procedure successfully completed.
+
+19:53:28 SQL> 
+19:53:28 SQL> SPOOL OFF
