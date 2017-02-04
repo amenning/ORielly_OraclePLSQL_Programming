@@ -9,15 +9,16 @@ CREATE OR REPLACE PROCEDURE display_multiple_months (
 )
 IS
     l_current_month PLS_INTEGER := start_month_in;
+    l_month_name VARCHAR(32);
     invalid_month EXCEPTION;
     PRAGMA EXCEPTION_INIT (invalid_month, -1843);    
 BEGIN
     LOOP
         EXIT WHEN l_current_month > end_month_in;
-        IF l_current_month > 12 
-            THEN RAISE invalid_month;
-        END IF;
-        DBMS_OUTPUT.PUT_LINE('Current Month: ' || l_current_month);
+        SELECT TO_CHAR(TO_DATE(l_current_month, 'MM'), 'MONTH') 
+            INTO l_month_name
+        FROM DUAL;
+        DBMS_OUTPUT.PUT_LINE('Current Month: ' || l_month_name);
         l_current_month := l_current_month +1;
     END LOOP;
 EXCEPTION

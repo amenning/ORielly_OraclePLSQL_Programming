@@ -1,46 +1,47 @@
-14:32:49 SQL> 
-14:32:49 SQL> CREATE OR REPLACE PROCEDURE display_multiple_months (
-14:32:49   2  	  start_month_in IN PLS_INTEGER
-14:32:49   3  	 ,end_month_in IN PLS_INTEGER
-14:32:49   4  )
-14:32:49   5  IS
-14:32:49   6  	  l_current_month PLS_INTEGER := start_month_in;
-14:32:49   7  	  invalid_month EXCEPTION;
-14:32:49   8  	  PRAGMA EXCEPTION_INIT (invalid_month, -1843);
-14:32:49   9  BEGIN
-14:32:49  10  	  LOOP
-14:32:49  11  	      EXIT WHEN l_current_month > end_month_in;
-14:32:49  12  	      IF l_current_month > 12
-14:32:49  13  		  THEN RAISE invalid_month;
-14:32:49  14  	      END IF;
-14:32:49  15  	      DBMS_OUTPUT.PUT_LINE('Current Month: ' || l_current_month);
-14:32:49  16  	      l_current_month := l_current_month +1;
-14:32:49  17  	  END LOOP;
-14:32:49  18  EXCEPTION
-14:32:49  19  	  WHEN invalid_month
-14:32:49  20  	      THEN DBMS_OUTPUT.PUT_LINE('Exception handled!');
-14:32:49  21  END;
-14:32:49  22  /
+15:04:54 SQL> 
+15:04:54 SQL> CREATE OR REPLACE PROCEDURE display_multiple_months (
+15:04:54   2  	  start_month_in IN PLS_INTEGER
+15:04:54   3  	 ,end_month_in IN PLS_INTEGER
+15:04:54   4  )
+15:04:54   5  IS
+15:04:54   6  	  l_current_month PLS_INTEGER := start_month_in;
+15:04:54   7  	  l_month_name VARCHAR(32);
+15:04:54   8  	  invalid_month EXCEPTION;
+15:04:54   9  	  PRAGMA EXCEPTION_INIT (invalid_month, -1843);
+15:04:54  10  BEGIN
+15:04:54  11  	  LOOP
+15:04:54  12  	      EXIT WHEN l_current_month > end_month_in;
+15:04:54  13  	      SELECT TO_CHAR(TO_DATE(l_current_month, 'MM'), 'MONTH')
+15:04:54  14  		  INTO l_month_name
+15:04:54  15  	      FROM DUAL;
+15:04:54  16  	      DBMS_OUTPUT.PUT_LINE('Current Month: ' || l_month_name);
+15:04:54  17  	      l_current_month := l_current_month +1;
+15:04:54  18  	  END LOOP;
+15:04:54  19  EXCEPTION
+15:04:54  20  	  WHEN invalid_month
+15:04:54  21  	      THEN DBMS_OUTPUT.PUT_LINE('Exception handled!');
+15:04:54  22  END;
+15:04:54  23  /
 
 Procedure created.
 
-14:32:49 SQL> 
-14:32:49 SQL> EXECUTE display_multiple_months(1, 15);
-Current Month: 1                                                                
-Current Month: 2                                                                
-Current Month: 3                                                                
-Current Month: 4                                                                
-Current Month: 5                                                                
-Current Month: 6                                                                
-Current Month: 7                                                                
-Current Month: 8                                                                
-Current Month: 9                                                                
-Current Month: 10                                                               
-Current Month: 11                                                               
-Current Month: 12                                                               
+15:04:54 SQL> 
+15:04:54 SQL> EXECUTE display_multiple_months(1, 15);
+Current Month: JANUARY                                                          
+Current Month: FEBRUARY                                                         
+Current Month: MARCH                                                            
+Current Month: APRIL                                                            
+Current Month: MAY                                                              
+Current Month: JUNE                                                             
+Current Month: JULY                                                             
+Current Month: AUGUST                                                           
+Current Month: SEPTEMBER                                                        
+Current Month: OCTOBER                                                          
+Current Month: NOVEMBER                                                         
+Current Month: DECEMBER                                                         
 Exception handled!                                                              
 
 PL/SQL procedure successfully completed.
 
-14:32:49 SQL> 
-14:32:49 SQL> SPOOL OFF
+15:04:54 SQL> 
+15:04:54 SQL> SPOOL OFF
