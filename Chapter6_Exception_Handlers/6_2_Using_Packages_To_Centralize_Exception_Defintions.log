@@ -1,0 +1,55 @@
+16:24:37 SQL> 
+16:24:37 SQL> CREATE OR REPLACE PACKAGE my_exceptions
+16:24:37   2  IS
+16:24:37   3  	  invalid_month EXCEPTION;
+16:24:37   4  	  PRAGMA EXCEPTION_INIT(invalid_month, -1843);
+16:24:37   5  END my_exceptions;
+16:24:37   6  /
+
+Package created.
+
+16:24:37 SQL> 
+16:24:37 SQL> CREATE OR REPLACE PROCEDURE display_multiple_months (
+16:24:37   2  	  start_month_in IN PLS_INTEGER
+16:24:37   3  	 ,end_month_in IN PLS_INTEGER
+16:24:37   4  )
+16:24:37   5  IS
+16:24:37   6  	  l_current_month PLS_INTEGER := start_month_in;
+16:24:37   7  	  l_month_name VARCHAR(32);
+16:24:37   8  BEGIN
+16:24:37   9  	  LOOP
+16:24:37  10  	      EXIT WHEN l_current_month > end_month_in;
+16:24:37  11  	      SELECT TO_CHAR(TO_DATE(l_current_month, 'MM'), 'MONTH')
+16:24:37  12  		  INTO l_month_name
+16:24:37  13  	      FROM DUAL;
+16:24:37  14  	      DBMS_OUTPUT.PUT_LINE('Current Month: ' || l_month_name);
+16:24:37  15  	      l_current_month := l_current_month +1;
+16:24:37  16  	  END LOOP;
+16:24:37  17  EXCEPTION
+16:24:37  18  	  WHEN my_exceptions.invalid_month
+16:24:37  19  	      THEN DBMS_OUTPUT.PUT_LINE('Exception handled!');
+16:24:37  20  END;
+16:24:37  21  /
+
+Procedure created.
+
+16:24:37 SQL> 
+16:24:37 SQL> EXECUTE display_multiple_months(1, 15);
+Current Month: JANUARY                                                          
+Current Month: FEBRUARY                                                         
+Current Month: MARCH                                                            
+Current Month: APRIL                                                            
+Current Month: MAY                                                              
+Current Month: JUNE                                                             
+Current Month: JULY                                                             
+Current Month: AUGUST                                                           
+Current Month: SEPTEMBER                                                        
+Current Month: OCTOBER                                                          
+Current Month: NOVEMBER                                                         
+Current Month: DECEMBER                                                         
+Exception handled!                                                              
+
+PL/SQL procedure successfully completed.
+
+16:24:37 SQL> 
+16:24:37 SQL> SPOOL OFF
