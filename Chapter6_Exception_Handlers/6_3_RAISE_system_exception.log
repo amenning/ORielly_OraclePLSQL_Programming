@@ -1,0 +1,24 @@
+16:45:11 SQL> 
+16:45:11 SQL> DECLARE
+16:45:11   2  	  x INTEGER;
+16:45:11   3  	  y INTEGER;
+16:45:11   4  BEGIN
+16:45:11   5  	  x := 0;
+16:45:11   6  	  IF x = 0
+16:45:11   7  	  THEN
+16:45:11   8  	      RAISE ZERO_DIVIDE;
+16:45:11   9  	  ELSE
+16:45:11  10  	      y := x / x;
+16:45:11  11  	  END IF;
+16:45:11  12  EXCEPTION
+16:45:11  13  	  WHEN ZERO_DIVIDE
+16:45:11  14  	  THEN
+16:45:11  15  	      DBMS_OUTPUT.PUT_LINE('Zero Divide Exception Raised.');
+16:45:11  16  END;
+16:45:11  17  /
+Zero Divide Exception Raised.                                                   
+
+PL/SQL procedure successfully completed.
+
+16:45:11 SQL> 
+16:45:11 SQL> SPOOL OFF
