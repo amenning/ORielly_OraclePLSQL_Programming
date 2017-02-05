@@ -1,0 +1,22 @@
+16:41:22 SQL> 
+16:41:22 SQL> DECLARE
+16:41:22   2  	  invalid_id EXCEPTION; -- All IDs must start with the letter 'X'.
+16:41:22   3  	  id_value VARCHAR(30);
+16:41:22   4  BEGIN
+16:41:22   5  	  id_value := 'Y';
+16:41:22   6  	  IF SUBSTR (id_value, 1, 1) != 'X'
+16:41:22   7  	  THEN
+16:41:22   8  	      RAISE invalid_id;
+16:41:22   9  	  END IF;
+16:41:22  10  EXCEPTION
+16:41:22  11  	  WHEN invalid_id
+16:41:22  12  	  THEN
+16:41:22  13  	      DBMS_OUTPUT.PUT_LINE('Invalid Id Exception Raised.');
+16:41:22  14  END;
+16:41:22  15  /
+Invalid Id Exception Raised.                                                    
+
+PL/SQL procedure successfully completed.
+
+16:41:22 SQL> 
+16:41:22 SQL> SPOOL OFF
