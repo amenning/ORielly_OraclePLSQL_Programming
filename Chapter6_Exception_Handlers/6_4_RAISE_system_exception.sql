@@ -1,7 +1,7 @@
 SET SERVEROUTPUT ON
 SET ECHO ON
 SET TIME ON
-SPOOL 6_3_RAISE_system_exception.log
+SPOOL 6_4_RAISE_system_exception.log
 
 DECLARE
     x INTEGER;

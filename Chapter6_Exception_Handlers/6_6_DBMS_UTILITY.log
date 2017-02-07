@@ -1,0 +1,75 @@
+17:29:43 SQL> 
+17:29:43 SQL> CREATE OR REPLACE PROCEDURE proc1 IS
+17:29:43   2  BEGIN
+17:29:43   3  	  DBMS_OUTPUT.PUT_LINE('Running proc1');
+17:29:43   4  	  DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_CALL_STACK);
+17:29:43   5  	  RAISE NO_DATA_FOUND;
+17:29:43   6  END;
+17:29:43   7  /
+
+Procedure created.
+
+17:29:43 SQL> 
+17:29:43 SQL> CREATE OR REPLACE PROCEDURE proc2 IS
+17:29:43   2  	  l_str VARCHAR(30) := 'Calling proc1';
+17:29:43   3  BEGIN
+17:29:43   4  	  DBMS_OUTPUT.PUT_LINE(l_str);
+17:29:43   5  	  proc1;
+17:29:43   6  END;
+17:29:43   7  /
+
+Procedure created.
+
+17:29:43 SQL> 
+17:29:43 SQL> CREATE OR REPLACE PROCEDURE proc3 IS
+17:29:43   2  BEGIN
+17:29:43   3  	  DBMS_OUTPUT.PUT_LINE('Calling proc2');
+17:29:43   4  	  proc2;
+17:29:43   5  EXCEPTION
+17:29:43   6  	  WHEN OTHERS
+17:29:43   7  	  THEN
+17:29:43   8  	      DBMS_OUTPUT.PUT_LINE('Error stack at top level:');
+17:29:43   9  	      DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+17:29:43  10  END;
+17:29:43  11  /
+
+Procedure created.
+
+17:29:43 SQL> 
+17:29:43 SQL> BEGIN
+17:29:43   2  	  DBMS_OUTPUT.PUT_LINE('Proc3 -> Proc2 -> Proc1 backtrace');
+17:29:43   3  	  proc3;
+17:29:43   4  	  DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_CALL_STACK);
+17:29:43   5  END;
+17:29:43   6  /
+Proc3 -> Proc2 -> Proc1 backtrace                                               
+Calling proc2                                                                   
+Calling proc1                                                                   
+Running proc1                                                                   
+----- PL/SQL Call Stack -----
+  object      line  object
+  handle    number     
+name
+000007FF2CFADAC0         4  procedure AMENNING.PROC1
+000007FF2CF418E0      
+5  procedure AMENNING.PROC2
+000007FF2CF1CBC0         4  procedure               
+AMENNING.PROC3
+000007FF2CF03DC8         3  anonymous block
+                     
+Error stack at top level:                                                       
+ORA-06512: at "AMENNING.PROC1", line 5
+ORA-06512: at "AMENNING.PROC2", line     
+5
+ORA-06512: at "AMENNING.PROC3", line 4
+                                       
+----- PL/SQL Call Stack -----
+  object      line  object
+  handle    number     
+name
+000007FF2CF03DC8         4  anonymous block
+                               
+
+PL/SQL procedure successfully completed.
+
+17:29:43 SQL> SPOOL OFF

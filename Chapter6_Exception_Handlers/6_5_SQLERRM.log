@@ -1,0 +1,11 @@
+17:18:25 SQL> 
+17:18:25 SQL> BEGIN
+17:18:25   2  	  DBMS_OUTPUT.PUT_LINE(SQLERRM(-1403));
+17:18:25   3  END;
+17:18:25   4  /
+ORA-01403: no data found                                                        
+
+PL/SQL procedure successfully completed.
+
+17:18:25 SQL> 
+17:18:25 SQL> SPOOL OFF
