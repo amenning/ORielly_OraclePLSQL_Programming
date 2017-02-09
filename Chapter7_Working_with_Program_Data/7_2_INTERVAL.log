@@ -1,0 +1,22 @@
+23:27:03 SQL> 
+23:27:03 SQL> CREATE OR REPLACE FUNCTION age (dob_in IN DATE)
+23:27:03   2  	  RETURN INTERVAL YEAR TO MONTH
+23:27:03   3  IS
+23:27:03   4  BEGIN
+23:27:03   5  	  RETURN (SYSDATE - dob_in) YEAR TO MONTH;
+23:27:03   6  END;
+23:27:03   7  /
+
+Function created.
+
+23:27:03 SQL> 
+23:27:03 SQL> BEGIN
+23:27:03   2  	  DBMS_OUTPUT.PUT_LINE('Age in years-months: ' || age(TO_DATE('1981-01-01', 'YYYY-MM-DD')));
+23:27:03   3  END;
+23:27:03   4  /
+Age in years-months: +36-01                                                     
+
+PL/SQL procedure successfully completed.
+
+23:27:03 SQL> 
+23:27:03 SQL> SPOOL OFF
