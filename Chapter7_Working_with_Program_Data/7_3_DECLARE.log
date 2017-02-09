@@ -1,23 +1,23 @@
-22:09:16 SQL> 
-22:09:16 SQL> DECLARE
-22:09:16   2  	  -- Simple declaration of numeric variables
-22:09:16   3  	  l_total_count NUMBER;
-22:09:16   4  
-22:09:16   5  	  -- Declaration of number that rounds to the nearest hundreth (cent):
-22:09:16   6  	  l_dollar_amount NUMBER (10,2);
-22:09:16   7  
-22:09:16   8  	  -- A single datetime value, assigned a default value of the database
-22:09:16   9  	  -- server's system clock.  Also, it can never by NULL.
-22:09:16  10  	  l_right_now DATE NOT NULL DEFAULT SYSDATE;
-22:09:16  11  
-22:09:16  12  	  -- Using the assignment operator for the default value specification
-22:09:16  13  	  l_favorite_flavor VARCHAR2(100) := 'Anything with chocolate, actually';
-22:09:16  14  BEGIN
-22:09:16  15  	  NULL;
-22:09:16  16  END;
-22:09:16  17  /
+18:01:08 SQL> 
+18:01:08 SQL> DECLARE
+18:01:08   2  	  -- Simple declaration of numeric variables
+18:01:08   3  	  l_total_count NUMBER;
+18:01:08   4  
+18:01:08   5  	  -- Declaration of number that rounds to the nearest hundreth (cent):
+18:01:08   6  	  l_dollar_amount NUMBER (10,2);
+18:01:08   7  
+18:01:08   8  	  -- A single datetime value, assigned a default value of the database
+18:01:08   9  	  -- server's system clock.  Also, it can never by NULL.
+18:01:08  10  	  l_right_now DATE NOT NULL DEFAULT SYSDATE;
+18:01:08  11  
+18:01:08  12  	  -- Using the assignment operator for the default value specification
+18:01:08  13  	  l_favorite_flavor VARCHAR2(100) := 'Anything with chocolate, actually';
+18:01:08  14  BEGIN
+18:01:08  15  	  NULL;
+18:01:08  16  END;
+18:01:08  17  /
 
 PL/SQL procedure successfully completed.
 
-22:09:16 SQL> 
-22:09:16 SQL> SPOOL OFF
+18:01:08 SQL> 
+18:01:08 SQL> SPOOL OFF

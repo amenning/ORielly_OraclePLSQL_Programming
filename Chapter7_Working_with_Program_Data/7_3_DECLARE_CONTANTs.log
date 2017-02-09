@@ -1,0 +1,16 @@
+18:01:41 SQL> 
+18:01:41 SQL> DECLARE
+18:01:41   2  	  -- The current year number; it's not going to change during my session.
+18:01:41   3  	  l_curr_year CONSTANT PLS_INTEGER := TO_NUMBER(TO_CHAR(SYSDATE, 'YYYY'));
+18:01:41   4  
+18:01:41   5  	  -- Using the DEFAULT keyword
+18:01:41   6  	  l_author CONSTANT VARCHAR2(100) DEFAULT 'Bill Pribyl';
+18:01:41   7  BEGIN
+18:01:41   8  	  NULL;
+18:01:41   9  END;
+18:01:41  10  /
+
+PL/SQL procedure successfully completed.
+
+18:01:41 SQL> 
+18:01:41 SQL> SPOOL OFF
