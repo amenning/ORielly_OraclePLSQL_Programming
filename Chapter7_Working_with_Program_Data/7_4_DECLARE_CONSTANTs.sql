@@ -1,7 +1,7 @@
 SET SERVEROUTPUT ON
 SET ECHO ON
 SET TIME ON
-SPOOL 7_3_DECLARE_CONTANTs.log
+SPOOL 7_4_DECLARE_CONSTANTs.log
 
 DECLARE
     -- The current year number; it's not going to change during my session.
